@@ -1,0 +1,57 @@
+<script>
+        $(document).ready(function () {
+
+            setInterval(live, 100);
+
+        });
+        var month = new Array(); // your month names
+        month[0] = "Ocak";
+        month[1] = "Şubat";
+        month[2] = "Mart";
+        month[3] = "Nisan";
+        month[4] = "Mayıs";
+        month[5] = "Temmuz";
+        month[6] = "Haziran";
+        month[7] = "Ağustos";
+        month[8] = "Eylül";
+        month[9] = "Ekim";
+        month[10] = "Kasım";
+        month[11] = "Aralık";
+        function live() {
+            $(".fyre-user-loggedout").html('Login');
+            $(".fyre-stream-livecount").html(parseInt($(".fyre-stream-livecount").html()) + " people listening");
+            $(".fyre-stream-sort-newest").html("newest");
+            $(".fyre-stream-sort-oldest").html("oldest");
+            $(".fyre-comment-count span").html(parseInt($(".fyre-comment-count span").html()) + " comment");
+            $(".goog-inline-block.fyre-button-right-inner-box:contains('Post')").html("Post comment");
+            $(".goog-inline-block.fyre-button-left-inner-box:contains('Unfollow')").html('UNfollow');
+            $(".goog-inline-block.fyre-button-left-inner-box:contains('Follow')").html('follow');
+            $(".fyre-comment-reply").html('reply');
+            $(".fyre-comment-date:contains('day')").html(parseInt($(".fyre-comment-date:contains('day')").html()) + " day ago");
+            $(".fyre-comment-date:contains('hour')").html(parseInt($(".fyre-comment-date:contains('hour')").html()) + " hour ago");
+            $(".fyre-comment-date:contains('minute')").html(parseInt($(".fyre-comment-date:contains('minute')").html()) + " minute ago");
+            $(".fyre-comment-date:contains('just')").html("just now");
+
+            $(".fyre-comment-like-btn:contains('Like')").html("like");
+            $(".fyre-comment-like-btn:contains('Unlike')").html("unlike");
+            $(".fyre-comment-edit span").html("edit");
+
+            $(".fyre-modal-alert-content:contains('You cannot like your own comment')").html("Kendi yorumunuzu beğenemezsiniz.");
+            $(".fyre-editor-error-close").next().html("Yorum kısmını boş bırakamazsınız.");
+            $(".fyre-edit-profile-link a").html("edit profile");
+            $(".fyre-logout-link a").html("logout");
+
+            $(".goog-inline-block.fyre-button-right-inner-box:contains('Edit')").html("edit");
+            $(".goog-inline-block.fyre-button-right-inner-box:contains('Cancel')").html("cancel");
+
+            $(".fyre-listener-avatars").remove();
+
+            $(".fyre-help").html('<img src="/img/OnlyLogo.png" />'); // your logo
+
+            $(".fyre-comment-date:contains(',')").each(function () {   // your date format
+                var sDate = new Date(Date.parse($(this).html(), "MMM dd, yyyy"));
+
+                $(this).html(sDate.getDate() + " " + month[sDate.getMonth()] + " " + sDate.getFullYear());
+            });
+        }
+    </script>
